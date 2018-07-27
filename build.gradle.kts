@@ -1,10 +1,12 @@
 import org.jetbrains.kotlin.gradle.dsl.Coroutines
 import org.jetbrains.kotlin.gradle.dsl.Coroutines.ENABLE
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import us.kirchmeier.capsule.task.FatCapsule
 
 plugins {
     java
     kotlin("jvm") version "1.2.51"
+    id("us.kirchmeier.capsule") version "1.0.2"
 }
 
 group = "com.zkislakrobinson"
@@ -32,4 +34,8 @@ configure<JavaPluginConvention> {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+task("fatCapsule", FatCapsule::class) {
+    applicationClass("virus.Virus")
 }
