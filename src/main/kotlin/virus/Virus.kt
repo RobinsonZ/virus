@@ -33,7 +33,7 @@ fun main(args: Array<String>) = runBlocking {
             ?: throw RuntimeException("Property drive-folder-id not found")
     val numUploaderRoutines = (props["uploader-coroutines"] as? Int) ?: 5
 
-    val documentsFile = File(props.getProperty("folder") ?: System.getProperty("os.home") + File.pathSeparator + "Documents")
+    val documentsFile = File(props.getProperty("folder") ?: System.getProperty("user.home") + File.pathSeparator + "Documents")
 
     // set up a channel. Recursive file tree traversal function (flattenFileTree) will constantly add lots of files to
     // this channel, and coroutines below will upload said files to Google Drive
