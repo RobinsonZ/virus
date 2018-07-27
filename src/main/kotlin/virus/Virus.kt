@@ -80,7 +80,7 @@ fun main(args: Array<String>) = runBlocking {
     Desktop.getDesktop().browse(URI("https://www.youtube.com/watch?v=dQw4w9WgXcQ"))
 }
 
-suspend fun flattenFileTree(root: File, outputChannel: Channel<File>) {
+private suspend fun flattenFileTree(root: File, outputChannel: Channel<File>) {
     for (file in root.listFiles()) {
         if (file.isDirectory) {
             // launch another coroutine which keeps iterating through, while this one moves on
@@ -91,6 +91,6 @@ suspend fun flattenFileTree(root: File, outputChannel: Channel<File>) {
     }
 }
 
-fun log(msg: String) = println("[${Thread.currentThread().name}] $msg")
+private fun log(msg: String) = println("[${Thread.currentThread().name}] $msg")
 
-typealias GFile = com.google.api.services.drive.model.File
+private typealias GFile = com.google.api.services.drive.model.File
