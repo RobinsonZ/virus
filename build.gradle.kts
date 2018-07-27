@@ -14,6 +14,7 @@ repositories {
 
 dependencies {
     compile(kotlin("stdlib-jdk8"))
+    compile("com.google.apis:google-api-services-drive:v3-rev124-1.23.0")
 }
 
 configure<JavaPluginConvention> {
